@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<br />
+<h1>Welcome to registering page!</h1>
+<p>Fill in the form below to create a personal account</p>
+<br />
+<div class="jumbotron container row g-3">
+  <form method="POST">
+    {{form.hidden_tag()}} <br />
+    {{form.firstName.label}}<br />
+    {{form.firstName()}}<br />
+    {{form.lastName.label}}<br />
+    {{form.lastName()}}<br />
+    {{form.email.label}}<br />
+    {{form.email()}} <br />
+    {{form.username.label}} <br />
+    {{form.username()}} <br />
+    {{form.password.label}}<br />
+    {{form.password()}} <br />
+    {{form.pass_confirm.label}}<br />
+    {{form.pass_confirm()}}<br />
+    {{form.submit()}}<br />
+  </form>
+</div>
+{% endblock %}

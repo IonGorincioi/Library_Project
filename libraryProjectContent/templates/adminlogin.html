@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+<!--  -->
+{% block content %}
+
+<!--  -->
+{% for mess in get_flashed_messages() %}
+<div class="alert alert-success fade show" role="alert">
+  <button
+    type="button"
+    class="fade close"
+    data-dismiss="alert"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+  {{mess}}
+</div>
+{% endfor %}
+
+<h1>Fill in the form bellow to log in as an Administrator</h1>
+<div class="jumbotron">
+  <form method="POST">
+    {{form.hidden_tag()}} <br />
+    {{form.name.label}}<br />
+    {{form.name}} <br />
+    {{form.username.label}}<br />
+    {{form.username}} <br />
+    {{form.password.label}}<br />
+    {{form.password}} <br />
+    {{form.submit()}}
+  </form>
+</div>
+{% endblock %}

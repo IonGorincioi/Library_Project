@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+<!--  -->
+{% block content %}
+
+<!--  -->
+{% for mess in get_flashed_messages() %}
+<div class="alert alert-success fade show" role="alert">
+  <button
+    type="button"
+    class="fade close"
+    data-dismiss="alert"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+  {{mess}}
+</div>
+{% endfor %}
+<!--  -->
+
+<div class="jumbotron">
+  <h1>This is admin index page !</h1>
+</div>
+{% endblock %}
