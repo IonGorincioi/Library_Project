@@ -60,18 +60,25 @@
       <li class="nav-item">
         <a class="nav-link active" href="{{url_for('core.info')}}">About</a>
       </li>
+
     <!-- Dropdown button -->
     
     <div class="dropdown">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" 
+           href="" 
+           id="navbarDropdown" 
+           role="button" 
+           data-bs-toggle="dropdown" 
+           aria-expanded="false">
           Dropdown
-        </a>
-      <ul class="dropdown-menu"
-          aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="{{url_for('users.login')}}">Action</a></li>
-        <li><a class="dropdown-item" href="{{url_for('admin.adminlogin')}}">Another action</a></li>         
-      </ul>
+        </a>   
+        <ul class="dropdown-menu"
+            aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="{{url_for('users.login')}}">Action</a></li>
+          <li><a class="dropdown-item" href="{{url_for('admin.adminlogin')}}">Another action</a></li>     
+        </ul>
+      </li>
     </div>
     
       <li class="nav-item">

@@ -11,5 +11,5 @@ from libraryProjectContent.admin.views import administrator
 
 
 app.register_blueprint(core)
-app.register_blueprint(user)
-app.register_blueprint(administrator)
+app.register_blueprint(user, url_prefix='/users')
+app.register_blueprint(administrator, url_prefix='/admin')

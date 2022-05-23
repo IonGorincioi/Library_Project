@@ -27,7 +27,7 @@ def index():
 #########################################################
 #############    SET UP THE LOGIN VIEW    ##############
 #########################################################
-@administrator.route('/loginAdm', methods=['GET', 'POST'])
+@administrator.route('/login', methods=['GET', 'POST'])
 def adminlogin():
    
     admform = LoginAdmin()                               #  Create an instance for the form from "LoginForm" object
