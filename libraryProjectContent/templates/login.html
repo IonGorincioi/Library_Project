@@ -18,12 +18,12 @@
 <h1>Fill in the form bellow to log into your account</h1>
 <div class="jumbotron">
   <form method="POST">
-    {{form.hidden_tag()}} <br />
-    {{form.username.label}}<br />
-    {{form.username}} <br />
-    {{form.password.label}}<br />
-    {{form.password}} <br />
-    {{form.submit()}}
+    {{userform.hidden_tag()}} <br />
+    {{userform.username.label}}<br />
+    {{userform.username}} <br />
+    {{userform.password.label}}<br />
+    {{userform.password}} <br />
+    {{userform.submit()}}
   </form>
 </div>
 {% endblock %}

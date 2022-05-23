@@ -21,14 +21,14 @@
 <h1>Fill in the form bellow to log in as an Administrator</h1>
 <div class="jumbotron">
   <form method="POST">
-    {{form.hidden_tag()}} <br />
-    {{form.name.label}}<br />
-    {{form.name}} <br />
-    {{form.username.label}}<br />
-    {{form.username}} <br />
-    {{form.password.label}}<br />
-    {{form.password}} <br />
-    {{form.submit()}}
+    {{admform.hidden_tag()}} <br />
+    {{admform.name.label}}<br />
+    {{admform.name}}<br />
+    {{admform.username.label}}<br />
+    {{admform.username}} <br />
+    {{admform.password.label}}<br />
+    {{admform.password}} <br />
+    {{admform.submit()}}
   </form>
 </div>
 {% endblock %}
