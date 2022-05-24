@@ -1,6 +1,6 @@
 #  Import necessary files
 
-from distutils.command.build_scripts import first_line_re
+
 from flask import render_template, Blueprint, redirect, flash, url_for, session
 from libraryProjectContent.users.forms import LoginForm, RegistrationForm
 
