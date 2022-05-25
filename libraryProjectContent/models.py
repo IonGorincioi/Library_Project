@@ -61,7 +61,7 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(128))
 
 ##  Connect the user with books
-   # books = db.relationship('Books', backref ='', lazy=True)
+   # books = db.relationship('Books', backref ='users', lazy=True)
 
 
 ##  Create an __init__ method to be able to create an instance of the user later on

@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+
+<!--  -->
+{% block content %}
 <br />
 <h1>Welcome to registering page!</h1>
 <p>Fill in the form below to create a personal account</p>
@@ -10,10 +13,10 @@
     {{userform.firstName()}}<br />
     {{userform.lastName.label}}<br />
     {{userform.lastName()}}<br />
-    {{userform.email.label}}<br />
-    {{userform.email()}} <br />
     {{userform.username.label}} <br />
     {{userform.username()}} <br />
+    {{userform.email.label}}<br />
+    {{userform.email()}} <br />
     {{userform.password.label}}<br />
     {{userform.password()}} <br />
     {{userform.pass_confirm.label}}<br />

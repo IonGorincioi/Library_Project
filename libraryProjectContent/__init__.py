@@ -22,7 +22,7 @@ Migrate(app, db)                #  Connect the app with database
 ############  LOGIN CONFIGURATION SETUP  ###########
 login_manager = LoginManager()        #   create an instance of LoginManager
 
-login_manager.init_app(app)       #   Pass in the app to the login_manager
+login_manager.init_app(app)           #   Pass in the app to the login_manager
 
 login_manager.login_view = 'users.login'       #  tell the users what view to go to when they need to log in
 
