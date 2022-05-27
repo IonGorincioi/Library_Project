@@ -3,7 +3,7 @@ from libraryProjectContent.admin.forms import  LoginAdmin
 
 
 administrator = Blueprint('admin', __name__, 
-                           template_folder = 'templates/admin')     #   assign a template folder that flask should look for  templates
+                           template_folder = 'templates/admin')     #   assign a template folder that flask should look
 
 
 #########################################################
@@ -27,7 +27,7 @@ def index():
 #########################################################
 #############    SET UP THE LOGIN VIEW    ##############
 #########################################################
-@administrator.route('/login', methods=['GET', 'POST'])
+@administrator.route('/loginAdm', methods=['GET', 'POST'])
 def adminlogin():
    
     admform = LoginAdmin()                               #  Create an instance for the form from "LoginForm" object

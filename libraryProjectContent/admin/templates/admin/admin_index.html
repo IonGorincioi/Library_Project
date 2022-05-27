@@ -17,8 +17,21 @@
 </div>
 {% endfor %}
 <!--  -->
-
+<h1 class="title">This is admin index page !</h1>
 <div class="jumbotron">
-  <h1>This is admin index page !</h1>
+  <a href="{{url_for('books.add')}}">
+    <button type="button" class="btn-manage btn btn-outline-info btn-lg">
+      Manage books
+    </button>
+  </a>
+  <a href="{{url_for('users.account')}}"></a>
+  <button type="button" class="btn-manage btn btn-outline-info btn-lg">
+    Manage Users
+  </button>
+  </a>
+
+  <button type="button" class="btn-manage btn btn-outline-info btn-lg">
+    Add Administrator
+  </button>
 </div>
 {% endblock %}

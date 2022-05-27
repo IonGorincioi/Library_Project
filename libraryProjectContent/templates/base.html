@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- style link -->
+    <link rel="stylesheet" href="../static/style.css">
+
+
     <!-- BOOTSTRAP LINK -->
     <link
       rel="stylesheet"
@@ -96,10 +100,11 @@
       </li>
 
       <!-- 6 -->
+      <!-- {% if current_user.is_authenticated %} -->
       <li class="nav-item">
         <a class="nav-link" href="{{url_for('users.logout')}}">Logout</a>
       </li>
-    
+      <!-- {% endif %} -->
   </nav>
 
     <div class="container">

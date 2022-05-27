@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+<!--  -->
+{% block content %}
+
+<!--  -->
+{% for mess in get_flashed_messages() %}
+<div class="alert alert-success fade show" role="alert">
+  <button
+    type="button"
+    class="fade close"
+    data-dismiss="alert"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+  {{mess}}
+</div>
+{% endfor %}
+<h1>Fill in the forms bellow to manage books</h1>
+<div>
+  <div class="jumbotron mb-3">
+    <form method="POST">
+      {{addform.hidden_tag()}} <br />
+      <!-- {{addform.id.label}}<br />
+        {{addform.id}} <br /> -->
+      {{addform.ISBN.label}}<br />
+      {{addform.ISBN}} <br />
+      {{addform.title.label}}<br />
+      {{addform.title}} <br />
+      {{addform.author.label}}<br />
+      {{addform.author}} <br />
+      {{addform.publisher.label}}<br />
+      {{addform.publisher}} <br />
+      {{addform.description.label}}<br />
+      {{addform.description}} <br />
+      <br />
+      {{addform.add()}} {{addform.update()}} {{addform.delete()}}
+    </form>
+  </div>
+</div>
+<!--  -->
+{% endblock %}
