@@ -89,7 +89,7 @@ def account():
 
     if userform.validate_on_submit():
         current_user.username = userform.username.data
-        current_user.email = userform.email.data
+        current_user.email = userform.email.data 
         
         db.session.commit()
 
