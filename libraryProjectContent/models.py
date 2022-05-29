@@ -4,10 +4,10 @@
 from enum import unique
 from libraryProjectContent import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
-from libraryProjectContent.admin.views import index      #  UserMixin allows us to have functionality such as "Is_Authenticated", "is_Active" etc.
+from flask_login import UserMixin                     #  UserMixin allows us to have functionality such as "Is_Authenticated", "is_Active" etc. 
+from libraryProjectContent.admin.views import index     
 
-#   next function will allow us to log users taking the user id
+#   next function will allow isers to log in, taking the user id,
 #   returning the user_id provided from the database
 @login_manager.user_loader
 def load_user(user_id):
@@ -59,23 +59,18 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(64), unique = True, index=True)
     email = db.Column(db.String(64), unique = True, index=True)
     password_hash = db.Column(db.String(128))
-
-##  Connect the user with books
-   # books = db.relationship('Books', backref ='users', lazy=True)
-
-
+    
 ##  Create an __init__ method to be able to create an instance of the user later on
     def __init__(self, fName, lName, username, email, password):
         self.fName = fName
         self.lName = lName
         self.username = username
         self.email = email
-        self.password = generate_password_hash(password)
-
+        self.password_hash = generate_password_hash(password)
 
 ##  Create another method that will check if the password provided during login
     def check_password(self, password):
-        return check_password_hash(self.password, password)
+        return check_password_hash(self.password_hash, password)
 
 ##   Create a method that will return a string representation of a user
 
@@ -88,8 +83,8 @@ class User(db.Model, UserMixin):
 
 class Book(db.Model):
 
-    __tablename__= 'books'
-    users = db.relationship(User)
+    __tablename__='books'
+    # users = db.relationship(User)
 
     id = db.Column(db.Integer, primary_key = True)
     ISBN = db.Column(db.String(), unique=True)
@@ -98,7 +93,8 @@ class Book(db.Model):
     publisher = db.Column(db.String)
     description = db.Column(db.Text)
 
-    def __init__(self, ISBN, title, author, publisher, description):
+    def __init__(self, id, ISBN, title, author, publisher, description):
+        self.id = id
         self.ISBN = ISBN
         self.title = title
         self.author = author

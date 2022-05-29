@@ -4,7 +4,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo
 from wtforms import ValidationError
-from flask_wtf.file import FileAllowed, FileField
 from libraryProjectContent.models import User
 
 
@@ -48,8 +47,10 @@ class RegistrationForm(FlaskForm):
 
 ##  This form will allow users to change their login credentials if they want to
 class UpdateUserForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    username = StringField('Username', validators=[DataRequired()])
+    firstName = StringField('First name')
+    lastName = StringField('Surname')
+    email = StringField('Email', validators=[Email()])
+    username = StringField('Username')
     submit = SubmitField('Update')
 
     ##  Next functions will make sure thet the user will nor enter an email

@@ -32,7 +32,7 @@ def login():
     
     userform = LoginForm()                                   #  Create an instance for the form from "LoginForm" object    
     if userform.validate_on_submit():
-        user = User.query.filter_by(email=userform.username.data).first()
+        user = User.query.filter_by(username=userform.username.data).first()
         
         if user.check_password(userform.password.data)and user is not None:
             login_user(user)
@@ -80,25 +80,29 @@ def thankyou():
 
 
 ##############################################################
-#############  SET UP THE ACCOUNT VIEW ######################
+#############  SET UP THE UPDATE VIEW ######################
 ##############################################################
-@user.route('/account', methods = ['GET','POST'])
-@login_required
-def account():
-    userform = UpdateUserForm()
+@user.route('/update', methods = ['GET','POST'])
 
-    if userform.validate_on_submit():
-        current_user.username = userform.username.data
-        current_user.email = userform.email.data 
+def updateUser():
+
+    updtform = UpdateUserForm()
+
+    if updtform.validate_on_submit():
+        user = User(fName=updtform.firstName.data,
+                    lName=updtform.lastName.data,
+                    email = updtform.email.data,
+                    username = updtform.username.data)
         
+        db.session.update(user)
         db.session.commit()
 
         flash('Your "username" and "email" has been updated')
-        return redirect(url_for('user.account'))
+        return redirect(url_for('users.updateUser'))
 
-    elif request.method == 'GET':
-        userform.username.data = current_user.username
-        userform.email.data = current_user.email
+    return render_template('update.html', userform = updtform)
+
+
+
+
     
-    return render_template('account.html', userform = userform)
-

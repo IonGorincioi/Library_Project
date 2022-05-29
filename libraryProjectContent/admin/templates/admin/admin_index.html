@@ -24,14 +24,16 @@
       Manage books
     </button>
   </a>
-  <a href="{{url_for('users.account')}}"></a>
-  <button type="button" class="btn-manage btn btn-outline-info btn-lg">
-    Manage Users
-  </button>
+  <a href="{{url_for('users.updateUser')}}">
+    <button type="button" class="btn-manage btn btn-outline-info btn-lg">
+      Manage Users
+    </button>
   </a>
 
-  <button type="button" class="btn-manage btn btn-outline-info btn-lg">
-    Add Administrator
-  </button>
+  <a href="#">
+    <button type="button" class="btn-manage btn btn-outline-info btn-lg">
+      Add Administrator
+    </button>
+  </a>
 </div>
 {% endblock %}

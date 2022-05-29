@@ -3,6 +3,32 @@
   width: 20rem;
 }
 
+.manage-page {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+.jumbotron-form {
+  height: auto;
+  width: 30%;
+  margin: 2%;
+  float: left;
+}
+
+.database-view {
+  width: 60%;
+  min-height: 100%;
+  display: inline-block;
+  margin: 2%;
+}
+
 h1 {
   text-align: center;
+}
+
+table,
+th,
+td {
+  border: 1px solid lightgray;
 }

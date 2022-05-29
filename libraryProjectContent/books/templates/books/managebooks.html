@@ -17,13 +17,14 @@
   {{mess}}
 </div>
 {% endfor %}
+
 <h1>Fill in the forms bellow to manage books</h1>
-<div>
-  <div class="jumbotron mb-3">
+<div class="manage-page container">
+  <div class="jumbotron-form jumbotron">
     <form method="POST">
       {{addform.hidden_tag()}} <br />
-      <!-- {{addform.id.label}}<br />
-        {{addform.id}} <br /> -->
+      {{addform.id.label}}<br />
+      {{addform.id}} <br />
       {{addform.ISBN.label}}<br />
       {{addform.ISBN}} <br />
       {{addform.title.label}}<br />
@@ -35,8 +36,47 @@
       {{addform.description.label}}<br />
       {{addform.description}} <br />
       <br />
-      {{addform.add()}} {{addform.update()}} {{addform.delete()}}
+      <!-- buttons -->
+      {{addform.add(class="btn btn-outline-success")}}
+      <!--add button -->
+      {{addform.update(class="btn btn-outline-warning")}}
+      <!--update button -->
+      {{addform.delete(class="btn btn-outline-danger")}}
+      <!--delete button -->
     </form>
+  </div>
+
+  <div class="database-view jumbotron">
+    <span>
+      <h6>
+        If you want to see the list of books in database press the button
+        bellow.
+      </h6>
+      <br />
+      <button class="btn btn-outline-info">Database</button>
+    </span>
+    <hr />
+    <table id="tab1" style="width: 100%">
+      <tr>
+        <th>ID</th>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <!-- <td>{{ID}}</td> -->
+
+        <td>{{id}}</td>
+        <td>{{ISBN}}</td>
+        <td>{{title}}</td>
+        <td>{{author}}</td>
+        <td>{{publisher}}</td>
+        <td>{{description}}</td>
+      </tr>
+    </table>
+    <hr />
   </div>
 </div>
 <!--  -->
