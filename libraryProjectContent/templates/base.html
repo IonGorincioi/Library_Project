@@ -65,13 +65,13 @@
             <a class="nav-link" href="{{url_for('core.info')}}">About</a>
           </li>
         
-          <!-- {% if current_user.is_authenticated %} -->
+          {% if current_user.is_authenticated %}
           <!-- Logout -->
           <li class="nav-item">
             <a class="nav-link" href="{{url_for('users.logout')}}">Logout</a>
           </li>
 
-          <!-- {% else %} -->
+          {% else %}
           <!-- Dropdown button -->
           <li class="nav-item dropdown active">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">

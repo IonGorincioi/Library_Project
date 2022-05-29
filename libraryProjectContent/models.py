@@ -51,9 +51,9 @@ class Admin(db.Model, UserMixin):
 ########################################################
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+    __tablename__ ='users'
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True )
     fName = db.Column(db.String(64))
     lName = db.Column(db.String(64))
     username = db.Column(db.String(64), unique = True, index=True)

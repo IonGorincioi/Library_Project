@@ -5,7 +5,7 @@
 # users list of books
 
 #  Import necessary files
-from flask import render_template, Blueprint, redirect, flash, url_for, session, request
+from flask import render_template, Blueprint, redirect, flash, url_for, session, request, abort
 from flask_login import login_user, current_user, logout_user, login_required
 from libraryProjectContent.users.forms import LoginForm, RegistrationForm, UpdateUserForm
 from libraryProjectContent import db
@@ -20,9 +20,11 @@ user = Blueprint('users', __name__,
 #############    SET UP THE LOGOUT VIEW    ##############
 #########################################################
 @user.route('/logout')
+@login_required
 def logout():
     logout_user()                           #  logout_user function imported from flask_login
-    return render_template('logout.html')
+    flash("You've been logged out! ")
+    return render_template(url_for('core.index'))
 
 ##############################################################
 ##################  SET UP THE LOGIN VIEW ####################

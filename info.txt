@@ -1,0 +1,533 @@
+##############################################################################################################
+           1.  SMALL DESCRIPTION ABOUT THE LIBRARY PROJECT
+##############################################################################################################
+
+This information sysytem is going to have several components:
+    - Core components
+    - User components
+    - Administrator components
+    - Library components - components related to the books in the library
+
+Each of this components will have attached several views.
+    - the "Core" components will have attached the following views:
+        1. The "index" view - which is basically the home page 
+        2. The "info" view - which is the about page
+
+    - User components will have views related to
+        1. Registering a User
+        2. Logging in an user
+        3. Logging out an user
+        4. Having an account for each user - if the user is logged in then he will have the ability to update his information.
+
+    - Administrator components will have views related to 
+        1. Logging in as an Administrator
+        2. Having an account as an Administrator
+        3. logging out from administrator account
+        3. the ability of an administrator to add, update and delete the information about books in database
+
+    - Library components will have attached views related to the books in the library
+
+    later on I'll create some templates that corespond to each view.
+
+
+##############################################################################################################
+           2.  CREATING THE NECESSARY FILES AND DIRECTORIES
+##############################################################################################################
+
+2.1. Create "CA_Project" directory - this directory will host the entire project
+
+        mkdir CA_Project
+
+2.2. inside this directory we are going to create
+    - a new file called "app.py"
+    - the main directory, called "libraryProjectContent", that is going to hold everything else for our project 
+
+2.3. underneath "libraryProjectContent" directory I'll set up all the others directories and files
+    - create new directory called "core"
+    - create "users" directory
+    - create "administrator" directory
+    - create "books" directory
+
+2.4. For each of these components I'm going to set up the forms and views (TO BE FINISHED)
+
+     - Underneath "core" directory create:  "__init__.py" and "views.py"
+     - Underneath "users" directory create "__init__.py", "views.py" and "forms.py"
+     - underneath "administrator" directory create "__init__.py", "views.py" and "forms.py"
+     - Underneath "books" directory create "__init__.py", "views.py" and "forms.py"
+
+///////////////////////////   NOTE:    ////////////////////////////////////
+
+        SINCE WE ARE GOING TO IMPORT THESE COMPONENTS INTO app.py FILE,
+        I'M GOING TO SET UP THE __init__ FILE FOR EACH COMPONENT
+        WHICH I'M GOING TO DO LATER. THE __init__ FILE WILL BE 
+        USED TO  IMPORT ALL THE COMPONENTS)
+//////////////////////////////////////////////////////////////////////////
+
+2.5.  Underneath "libraryProjectContent" directory, create the "error_pages" directory 
+      (which will host special python file that is going to show views things like 404 pages   - TO BE SET UP LATER)
+    
+
+2.6.  Underneath "libraryProjectContent" directory create "templates" directory 
+      that will hold the templates (single *.html files) for our project.
+
+2.7.  Underneath "libraryProjectContent" directory create "static" folder that
+      will hold "*.css" files, "*.js" files, and profile images.
+
+2.8.  Underneath "libraryProjectContent" directory create "models.py" that 
+      will hold models (database tables like) for out  project                                 -  TO BE SET UP LATER
+
+2.9.  Underneath "libraryProjectContent" directory create "__init__.py" that will hold a lot organizational logic 
+      connecting everything together, so that we can run our "app.py" application successfully
+
+
+##############################################################################################################
+           3.  ADDING CODE TO FILES.
+##############################################################################################################
+
+3.1.  Open the "__init__.py" file underneath libraryProjectContent and set up 
+      the application by adding the following code:
+
+                from flask import Flask                     # import the Flask class
+                app = Flask(__name__)                       # create the "app" object from "Flask" class
+
+3.2.  Open the "app.py" file and write the following code to run tne application
+
+                from libraryProjectContent import app       # import the app from libraryProjectContent
+
+                if __name__ == '__main__':                  # run the app
+                app.run(debug=True)
+
+
+##############################################################################################################
+           4.  SET UP THE CORE VIEWS AND TEMPLATES
+##############################################################################################################
+
+4.1.   Underneath the "core" directory open "views.py" file and create the views for core component.
+
+                from flask import render_template, Blueprint
+
+                core = Blueprint('core',__name__)
+
+                @core.route('/')
+                def index():
+                    return render_template('index.html')
+
+                @core.route('/about')
+                def info():
+                    return render_template('info.html')
+
+4.2.  Underneath "templates" folder open "base.html" file and set up the all the 
+      parts of a web site that are the same for each page. Here are included all
+      the bootstrap, js, jQuery, etc links, along with the code for nav-bar, footer, etc.
+
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8" />
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                    <!-- BOOTSTRAP LINK -->
+                    <link
+                    rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+                    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+                    crossorigin="anonymous"
+                    />
+
+                    <!-- JavaScript Bundle with Popper -->
+                    <script
+                    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                    crossorigin="anonymous"
+                    ></script>
+                    <script
+                    src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+                    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                    crossorigin="anonymous"
+                    ></script>
+                    <script
+                    src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+                    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                    crossorigin="anonymous"
+                    ></script>
+                    <title>Document</title>
+                </head>
+                <body>
+                    <!-- SET UP THE NAVIGATION BAR -->
+                    <ul
+                    class="nav navbar-expand-lg navbar-light"
+                    style="background-color: #e3f2fd"
+                    >
+                    <li class="nav-link">
+                        <a href="{{url_for('core.index')}}">Home</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{{url_for('core.info')}}">About</a>
+                    </li>
+
+<!--   Next list elements do nat have a actual link yet                         - TO BE SET LATER ON   -->
+
+                    <li class="nav-link">
+                        <a href="#">My account</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">Login</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">Register</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">Logout</a>
+                    </li>
+                    </ul>
+
+                    <div class="container-fluid">{% block content %} {% endblock %}</div>
+                </body>
+                </html>
+
+
+4.3.  Underneath "templates" directory create two more views "index.html" and "info.html"
+      open them an add the following code
+      
+      ########   index.html    ################
+
+                {% extends 'base.html' %} 
+                
+                {% block content %}
+                    <div class="jumbotron">
+                        <h1>Welcome to the library!</h1>
+                    </div>
+                {% endblock %}
+
+
+
+      ########   info.html    ################
+
+                {% extends "base.html" %} 
+                
+                {% block content %}
+                    <div class="jumbotron">
+                        <h1>This is information about our library.</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores
+                            distinctio, nobis debitis voluptatum id dicta recusandae architecto non odio
+                            aperiam, autem, repellat sequi? Illum nobis enim temporibus explicabo, quasi
+                            maiores?
+                        </p>
+                    </div>
+                {% endblock %}
+
+
+4.4.  next we need to make sure that all is connected
+      for that we need to make sure that the blueprint is registere
+
+      underneath the libraryProjectContent open the 
+      "__init__.py" file and add the following code:
+       
+                from libraryProjectContent.core.views import core
+                app.register_blueprint(core)
+
+      Now the file should look like:
+
+                from flask import Flask
+
+                app = Flask(__name__)                                   #   create the app object using Flask class
+
+                from libraryProjectContent.core.views import core       #   import the core object created using Blueprint
+                app.register_blueprint(core)                            #   register the Blueprint for core object
+
+
+##############################################################################################################
+                                   5.  CREATING MODELS
+##############################################################################################################
+
+Before starting working with forms for different components in our application, it is good idea to set up the basic models.
+So let's set up the necessary models and then create databases for them
+
+Before diving into models we need to set up our "database", using "Flask SQLAlchemy" 
+
+5.1.    Underneath the "libraryProjectContent" folder open "__init__.py" file
+
+        -   add the following imports at the beginnig of the code:
+    
+                import os
+                from flask_sqlalchemy import SQLAlchemy
+                from flask_migrate import Migrate
+
+        -   bellow app setups, we set up our database and make the
+            actual connection with the database
+
+                basedir = os.path.abspath(os.path.dirname(__file__))
+                app.cofig['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir, 'data.sqlite')     # sets up the actual connection with the database
+                app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+        -   Create a database object 
+
+                db = SQLAlchemy(app) 
+
+        -   Connect the application to the database
+
+                Migrate(app,db)
+
+5.2.    Underneath the "libraryProjectContent" folder create the "models.py" file
+
+        in this file we'll set up:
+
+        -   The "user" model class
+        -   The "book" model class
+        -   The "administraror" model class
+
+5.3.    Make some imports:
+
+            from libraryProjectContent import db
+            from libraryProjectContent.core.views import index
+            from werkzeug.security import generate_password_hash, check_password_hash
+            from flask_login import UserMixin
+
+
+5.3.    Set up the attributes for "User" model
+
+
+            @login_manager.user_loader
+            def load_user(user_id):                    #  define "load_user" function that takes as an argument the "user_id"
+                return User.query.get(user_id )        #  gets the user_id provided in User model and returns it
+
+            class User(db.Model, UserMixin):
+                __tablename__ = 'users'                  #  set up the table name
+
+                id = db.Column(db.Integer, primary_key = True)
+            #   profile_image = db.Column(db.String(64), nullable = False, default = 'default_profile.png)
+                email = db.Column(db.String(64), unique=True, index=True)    #  unique=True - means that this field should be unique.
+                username = db.Column(db.String(64), unique=True, index=True)
+                password_hash = db.Column(db.String(128))
+
+     #   next we gonna connect the "User" to the "Books"  -  creating a relationship between them
+                book = db.relationship('Books', backref='#################', lazy=True )
+
+     #   define the init method to create an instance from the "User"
+                def __init__(self, email, username, password):
+                    self.email = email
+                    self.username = username
+                    self.password_hash = generate_password_hash(password)
+
+     #   Create a method that will check if the password match
+                def check_password(self, password):
+                    return check_password_hash(self.password_hash, password)     #  chect the user's current password hash vs password provided
+
+     #   Define a representation function to print out the user
+                def __resp__(self):
+                    return f"Username {self.username}"
+
+5.4.    set up the ability to have a loggin manager for this "user" model
+
+    -    open the "__init__.py" file underneath the libraryProjectContent and add the following import
+
+                from flask_login import LoginManager
+
+    -   set up the login configuration. 
+        after database setup add the following code:
+
+                login_manager = LoginManager()                #  Create the "login_manager" object as an instance of LoginManager class
+                login_manager.init_app(app)                   #  Pass in our app into the login_manager
+                login_manager.login_view = 'users.login'      #  specifies what view to go to when a user loggs in
+
+    -   go back to the "models.py" file and import "login_manager" from libraryProjectContent 
+
+
+5.6.    
+                                               TO 
+
+                                               BE 
+
+                                            COMPLETED
+
+                                              LATER
+
+                                                ON
+
+
+
+##############################################################################################################
+            6.  CREATING THE FORMS THAT USERS ARE GOING TO USE IN ORFER TO LOGIN AND REGISTER
+##############################################################################################################
+
+6.1.    Underneath "libraryProjectContent/users" create "forms.py" file
+
+6.2.    open the "forms.py" file and add the following code:
+
+            
+                # Form imports
+                from flask_wtf import FlaskForm
+                from wtforms import StringField, PasswordField, SubmitField
+                from wtforms.validators import DataRequired, Email, EqualTo
+                from wtforms import ValidationError
+            #   from form_wtf.file import FileField, FileAllowed   #  these will allow the user to update the .png files in irder to have their profile picture displayed
+
+                # User imports
+                from flask_login import current_user
+                from libraryProjectContent.models import User
+
+                ############################################################
+                #############   CREATE THE LOGGIN FORM   ###################
+                ############################################################
+
+                class LoginForm(FlaskForm):                   #  Create a LoginForm that inherits from "FlaskForm" 
+                    email = StringField('Email', validator[DataRequired(), Email()])
+                    password = PasswordField('Password', validator[DataRequired()])
+                    submit = SubmitField('Log in')
+
+
+                ############################################################
+                #############   CREATE THE REGISTRATION FORM   #############
+                ############################################################
+
+                class RegistrationForm(FlaskForm):
+                    email = StringField('Email', validator[DataRequired(), Email()])
+                    username = StringField('Username', validator[DataRequired()])
+                    password =  PasswordField('Password', validator[DataRequired(), EqualTo('pass_confirm', message = 'Password must match')])
+                    pass_confirm =  PasswordField('Confirm password', validator[DataRequired()])
+                    submit = SubmitField('Register')
+
+
+                #  Next functions checks if the email and username is not already taken
+
+                    def check_email(self, field):
+                        if User.query.filter_by(email=field.data).first():
+                            raise(ValidationError('This email has been already taken'))
+                
+
+                    def check_username(self, field):
+                        if User.query.filter_by(username=field.data).first():
+                            raise(ValidationError('This username has been already taken'))
+
+
+
+                ############################################################
+                ############   CREATE THE UPDATE THE USER FORM   ###########
+                ############################################################
+
+                class UpdateUserForm(FlaskForm):
+                    email = StringField('Email', validator[DataRequired(), Email()])
+                    username = StringField('Username', validator[DataRequired()])
+                #   picture = FileField('Update Profile Picture',validator=[FileAllowed(['jpg', 'png'])])
+                    submit = SubmitField('Update')
+
+
+                #  Next functions checks if the user do not enter the same data for updates
+
+                    def check_email(self, field):
+                        if User.query.filter_by(email=field.data).first():
+                            raise(ValidationError('This email has been already taken'))
+                
+
+                    def check_username(self, field):
+                        if User.query.filter_by(username=field.data).first():
+                            raise(ValidationError('This username has been already taken'))
+
+
+
+##############################################################################################################
+                               7.  CONNECT THE VIEWS WITH TEMPLATES
+##############################################################################################################
+
+7.1.    under "users" folder create "views.py" file 
+
+7.2.    Open "views.py" file 
+
+        -   make the following imports:
+
+                from flask import render_templates, url_for, flash, request, Blueprint
+                from flask_login import login_user, current_user, logout_user, login_required
+                from libraryProjectContent import db
+                from libraryProjectContent.models import User
+                from libraryProjectContent.users.forms import LoginForm, RegistrationForm, UpdateUserForm
+        
+        -   Register as a Blueprint
+
+                user = Blueprint('users', __name__):
+
+        -   Register this in "__init__.py" file
+            go to "__init__.py" file underneath "libraryProjectContent" and add the following statements
+
+                from libraryProjectContent.users.views import user
+                app.register_blueprint(user)
+
+        -   Create the "logout" view.
+            in "views.py" file under "users" directory add:
+
+                @users.route('/logout')
+                def logout():
+                    logout_user()
+                    return redirect(url_for('core.index'))
+
+        -   Create the "register" view.
+            in "views.py" file under "users" directory add:
+
+                @users.route('/register', methods = ['GET', 'POST'])   
+                def register():
+                    form = RegistrationForm()               #  Create an Instance from "RegistrationForm" object that was created in "forms.py" file
+
+                    if form.validate_on_submit():           #  if the submit was clicked
+
+                        user = User(email = form.email.data,            #  Create the user Object
+                                    username = form.username.data,
+                                    password = form.password.data)                
+                        
+                        db.session.add(user)                            #  Add the user into a session
+                        db.session.commit()                             #  save the changes into the database
+
+                        flash('Thank you for registration!')            #  Flash a message
+                        
+                        return redirect(url_for('users.login'))         #  Redirect the user to the login page
+
+                    return render_template('register.html', form = form)
+
+
+7.3.    Create the "register.html" file
+        under "templates" directory create "register.html" file
+        and add the following code in it:
+
+                {% extends 'base.html' %} {% block content %}
+                <form method="POST">
+                {{form.hidden_tag()}} <br />
+                {{form.email.label}} {{form.email}} <br />
+                {{form.username.label}} {{form.username}} <br />
+                {{form.password.label}} {{form.password}} <br />
+                {{form.pass_confirm.label}} {{form.pass_confirm}} <br />
+                {{form.submit()}}
+                </form>
+                {% endblock %}
+
+7.4.    Open "views.py" under "users" directory and proceed to creating 
+        the login view 
+
+                ################   Login  View   #################
+
+                @users.route('/login', methods=['GET', 'POST'])
+                def login():
+
+                    form = LoginForm()                                   #  Create an instance for the form from "LoginForm" object
+
+                    if form.validate_on_submit():
+
+                        user = User.query.filter_by(email=form.email.data).first()   #  since the user already exists, we query data about the user
+                        
+                        #  Next we make sure that user provided the right password
+                        if user.check_password(form.password.data) and user is not None:    
+                            login_user(user)
+                            flash('Log in Success!')
+
+                        #  the "next" object return the user to the page that it was before being prompted to log in.
+                            next = request.args.get('next')
+                        
+                            if next == None or not next[0]=='/':
+                                next = url_for('core.index')
+                            
+                            return redirect(next)
+
+                    return render_template('login.html', form=form)
+                        
+
+
+
+
