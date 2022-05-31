@@ -23,8 +23,7 @@
   <div class="jumbotron-form jumbotron">
     <form method="POST">
       {{addform.hidden_tag()}} <br />
-      {{addform.id.label}}<br />
-      {{addform.id}} <br />
+
       {{addform.ISBN.label}}<br />
       {{addform.ISBN}} <br />
       {{addform.title.label}}<br />
@@ -66,14 +65,14 @@
         <th>Description</th>
       </tr>
 
-      {% for book in new_books %}
+      {% for new_book in new_books %}
       <tr>
-        <td>{{book.id}}</td>
-        <td>{{book.ISBN}}</td>
-        <td>{{book.title}}</td>
-        <td>{{book.author}}</td>
-        <td>{{book.publisher}}</td>
-        <td>{{book.description}}</td>
+        <td>{{new_book.id}}</td>
+        <td>{{new_book.ISBN}}</td>
+        <td>{{new_book.title}}</td>
+        <td>{{new_book.author}}</td>
+        <td>{{new_book.publisher}}</td>
+        <td>{{new_book.description}}</td>
       </tr>
       {% endfor %}
     </table>

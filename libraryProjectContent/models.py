@@ -83,7 +83,7 @@ class User(db.Model, UserMixin):
 
 class Book(db.Model):
 
-    __tablename__='books'
+    __tablename__= 'books'
     # users = db.relationship(User)
 
     id = db.Column(db.Integer, primary_key = True)

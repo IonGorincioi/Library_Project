@@ -6,9 +6,8 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 
 
-
+#  Create a Flask instance
 app = Flask(__name__)
-
 
 #  configure the secret key
 app.config['SECRET_KEY'] = 'mysecretkey'
@@ -31,7 +30,6 @@ login_manager.init_app(app)                    #   Pass in the app to the login_
 login_manager.login_view = 'users.login'       #   tell the users what view to go to when they need to log in
 
 ###################################################
-
 
 
 ###################################################
