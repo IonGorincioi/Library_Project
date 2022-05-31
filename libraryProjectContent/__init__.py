@@ -16,24 +16,24 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 #   app configuration for slite
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir, 'data.sqlite')
-
-#   app configuration for mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Gsandanat.1@localhost/books'
-
 #  configure the secret key
 app.config['SECRET_KEY'] = 'mysecretkey'
 
+
+#   app configuration for mysql
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Gsandanat.1@localhost/books'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-login_manager = LoginManager()                 #   create an instance of LoginManager
+
 
 db = SQLAlchemy(app)            #  Create a database object 
+
 Migrate(db, app)                #  Connect the app with database
 
 ################################################
 
 ############  LOGIN CONFIGURATION SETUP  ###########
-
+login_manager = LoginManager()                 #   create an instance of LoginManager
 login_manager.init_app(app)                    #   Pass in the app to the login_manager
 login_manager.login_view = 'users.login'       #   tell the users what view to go to when they need to log in
 
