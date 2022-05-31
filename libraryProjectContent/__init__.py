@@ -9,12 +9,20 @@ from flask_login import LoginManager
 #  Create a Flask instance
 app = Flask(__name__)
 
-#  configure the secret key
-app.config['SECRET_KEY'] = 'mysecretkey'
+
 
 ###############  DATABASE SETUP  ################
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir, 'data.sqlite')
+
+#   app configuration for slite
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir, 'data.sqlite')
+
+#   app configuration for mysql
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Gsandanat.1@localhost/books'
+
+#  configure the secret key
+app.config['SECRET_KEY'] = 'mysecretkey'
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 login_manager = LoginManager()                 #   create an instance of LoginManager
