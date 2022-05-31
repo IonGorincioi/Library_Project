@@ -21,7 +21,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 login_manager = LoginManager()                 #   create an instance of LoginManager
 
 db = SQLAlchemy(app)            #  Create a database object 
-Migrate(app, db)                #  Connect the app with database
+Migrate(db, app)                #  Connect the app with database
 
 ################################################
 

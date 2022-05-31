@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, request
 
-core = Blueprint('core',__name__)
+core: Blueprint = Blueprint('core',__name__)
 
 @core.route('/')
 def index():

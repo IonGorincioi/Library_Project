@@ -65,14 +65,17 @@
         <th>Publisher</th>
         <th>Description</th>
       </tr>
+
+      {% for book in new_books %}
       <tr>
-        <td>{{id}}</td>
-        <td>{{ISBN}}</td>
-        <td>{{title}}</td>
-        <td>{{author}}</td>
-        <td>{{publisher}}</td>
-        <td>{{description}}</td>
+        <td>{{book.id}}</td>
+        <td>{{book.ISBN}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.publisher}}</td>
+        <td>{{book.description}}</td>
       </tr>
+      {% endfor %}
     </table>
     <hr />
   </div>
