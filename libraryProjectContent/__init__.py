@@ -14,10 +14,13 @@ app = Flask(__name__)
 ###############  DATABASE SETUP  ################
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-#   app configuration for slite
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir, 'data.sqlite')
+
 #  configure the secret key
 app.config['SECRET_KEY'] = 'mysecretkey'
+
+
+#   app configuration for slite
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir, 'data.sqlite')
 
 
 #   app configuration for mysql
