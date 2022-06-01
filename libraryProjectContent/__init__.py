@@ -21,14 +21,14 @@ app.config['SECRET_KEY'] = 'mysecretkey'
 
 
 #   app configuration for mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Gsandanat.1@localhost/books'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password1@localhost/books'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 
 db = SQLAlchemy(app)            #  Create a database object 
 
-Migrate(db, app)                #  Connect the app with database
+migrate = Migrate(db, app)                #  Connect the app with database
 
 ################################################
 
